@@ -1,0 +1,157 @@
+.model small
+.code
+org 100h
+start:
+jmp mulai
+menu:
+ db 13,10,'Brand Motor'
+ db 13,10,'01. Beat'
+ db 13,10,'02. Vario'
+ db 13,10,'03. Aerox'
+ db 13,10,'04. Supra'
+ db 13,10,'05. Rx King'
+ db 13,10,'06. nmax'
+ db 13,10,'07. mio'
+ db 13,10,'08. ninja'
+ db 13,10,'09. pcx'
+ pilih_menu db 13,10,'Masukkan Pilihan: $'
+ succes db 13,10,'Cetak Struk $'
+ error db 13,10,'Kode Salah $'
+ 
+ 
+Mulai:
+     mov ah,09h
+     mov dx,offset menu
+     int 21h
+     jmp proses
+     jmp error_msg
+ 
+error_msg:
+     mov ah,09h
+     mov dx,offset error
+     int 21h
+     int 20h
+proses:
+     mov ah,09h
+     mov dx,offset pilih_menu
+     int 21h
+     
+     mov ah,1
+     int 21h
+     mov bh,al
+     mov ah,1
+     int 21h
+     mov bl,al
+     cmp bh,'0'
+     cmp bl,'1'
+     je hasil1
+     
+     cmp bh,'0'
+     cmp bl,'2'
+     je hasil2
+     
+     cmp bh,'0'
+     cmp bl,'3'
+     je hasil3
+     
+     cmp bh,'0'
+     cmp bl,'4'
+     je hasil4
+     
+     cmp bh,'0'
+     cmp bl,'5'
+     je hasil5
+     
+     cmp bh,'0'
+     cmp bl,'6'
+     je hasil6
+     
+     cmp bh,'0'
+     cmp bl,'7'
+     je hasil7
+     
+     cmp bh,'0'
+     cmp bl,'8'
+     je hasil8
+     
+     cmp bh,'0'
+     cmp bl,'9'
+     je hasil9
+     
+   
+     jne error_msg
+     
+       
+ hasil1:
+    mov ah,09h
+    mov dx,teks1         
+    int 21h
+    int 20h
+     
+ hasil2:
+    mov ah,09h
+    mov dx,teks2
+    int 21h
+    int 20h
+    
+ hasil3:
+    mov ah,09h
+    mov dx,teks3
+    int 21h
+    int 20h
+     
+ hasil4:
+    mov ah,09h
+    mov dx,teks4
+    int 21h
+    int 20h
+     
+ hasil5:
+    mov ah,09h
+    mov dx,teks5
+    int 21h
+    int 20h
+     
+ hasil6:
+    mov ah,09h
+    mov dx,teks6
+    int 21h
+    int 20h
+    
+ hasil7:
+    mov ah,09h
+    mov dx,teks7
+    int 21h
+    int 20h
+     
+ hasil8:
+    mov ah,09h
+    mov dx,teks8
+    int 21h
+    int 20h
+    
+ hasil9:
+    mov ah,09h
+    mov dx,teks9
+    int 21h
+    int 20h
+    
+ teks1:
+  db 13,10,'1. Beat Seharga 6jt-20jt $'
+ teks2:
+  db 13,10,'2. Vario 6jt-25 jt $'
+ teks3:
+  db 13,10,'3. Aerox 15jt-30jt $'
+ teks4:
+  db 13,10,'4. Supra 4jt-15jt $'
+ teks5:
+  db 13,10,'5. Rx King 20jt-50jt $'
+ teks6:
+  db 13,10,'6. nmax 15jt-21jt $'
+ teks7:
+  db 13,10,'7. Mio 7jt-23jt $'
+ teks8:
+  db 13,10,'8. Ninja 15t-70jt $'
+ teks9:
+  db 13,10,'9. Pcx 18jt-36jt $'    
+ end start          
